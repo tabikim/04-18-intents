@@ -2,6 +2,7 @@ package edu.uw.intentdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -15,6 +16,14 @@ public class SecondActivity extends AppCompatActivity {
         //action bar "back"
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String value = bundle.getString("edu.uw.intentdemo.message");
+            if(value != null) {
+                TextView subtitle = (TextView) findViewById(R.id.txtSecond);
+                subtitle.setText(value);
+            }
+        }
 
     }
 }
